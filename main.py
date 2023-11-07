@@ -3,6 +3,8 @@ from tkinter import *
 
 def button_funciton():
     print(weight_entry.get())
+    label_conclusion.config(text=weight_entry.get())
+
 
 
 window=tkinter.Tk()
