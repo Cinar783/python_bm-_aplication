@@ -1,50 +1,30 @@
 import tkinter
 from tkinter import *
 
-
-
-def button_funciton():
-    a=weight_entry.get()
-    b=height_entry.get()
-    c=(int(a)/((int(b))/100)**2)
-    return  label_conclusion.config(text=f'{c}')
-
-
 window=tkinter.Tk()
-window.title("Pyhon BMI Aplication")
-window.minsize(width=500,height=500)
+window.title("Python BMI Tkinter")
+window.minsize(500,500)
 
-weight_labale=Label(text='Enter Your Weight (kg)')
-weight_labale.pack()
+#Boy
+label_height=Label(text='Please Enter Height',font='italic',pady=10)
+label_height.pack()
 
-weight_entry=Entry()
-weight_entry.pack()
-
-height_label=Label(text='Enter Your Height (cm)')
-height_label.pack()
-
-height_entry=Entry()
-height_entry.pack()
-
-calculate_button=Button(text='Calculata',width=20,command=button_funciton)
-calculate_button.config(pady=10)
-calculate_button.pack()
-
-label_conclusion=Label( text='Conclusion')
-
-label_conclusion.pack()
+entry_height=Entry(bg='light blue',font='italic')
+entry_height.pack()
 
 
-tkinter.mainloop()
+#kilo
+label_weight=Label(text='Please Enter Weight',font='italic',pady=20)
+label_weight.pack()
+
+
+entry_weight=Entry(bg='light blue',font='italic')
+entry_weight.pack()
+
+
+my_button=Button(text='Calculate',padx=20,font='italic')
+my_button.pack()
 
 
 
-
-
-
-
-
-
-
-
-
+window.mainloop()
