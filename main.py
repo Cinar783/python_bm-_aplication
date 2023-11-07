@@ -1,10 +1,13 @@
 import tkinter
 from tkinter import *
 
-def button_funciton():
-    print(weight_entry.get())
-    label_conclusion.config(text=weight_entry.get())
 
+
+def button_funciton():
+    a=weight_entry.get()
+    b=height_entry.get()
+    c=(int(a)/((int(b))/100)**2)
+    return  label_conclusion.config(text=f'{c}')
 
 
 window=tkinter.Tk()
@@ -27,18 +30,21 @@ calculate_button=Button(text='Calculata',width=20,command=button_funciton)
 calculate_button.config(pady=10)
 calculate_button.pack()
 
-label_conclusion=Label(text='Conclusion')
+label_conclusion=Label( text='Conclusion')
+
 label_conclusion.pack()
 
 
-
-
-
-
-
-
-
-
-
-
 tkinter.mainloop()
+
+
+
+
+
+
+
+
+
+
+
+
