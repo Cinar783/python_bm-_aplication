@@ -1,62 +1,53 @@
 import tkinter
-from tkinter import *
 
 window=tkinter.Tk()
-window.title("Python BMI Tkinter")
+window.title("Python Tkinter BMI Calculator")
+window.config(pady=20,padx=20)
 window.minsize(500,500)
-calculate=0
 
-def buttton_function():
-    height=entry_height.get()
-    weight=entry_weight.get()
-    if weight=="" or height=="":
-        my_calculate.config(text="Boy ve Kilo giriniz")
+def button_function():
+    height=height_entry.get()
+    weight=weight_entry.get()
+    if height=='' or weight=='':
+        result_label.config(text='Please enter height and weight')
     else:
-        try:
-            calculate=(float(weight)/(float(height)/100)**2)
-            my_calculate.config(text=f'Vicut İndeksiniz: {calculate}')
-            if calculate<18.5:
-                message_calculate.config(text='Düşük Kilolusunuz')
-            elif calculate>=18.50 and calculate<=24.99:
-                message_calculate.config(text='Normal Kilolusunuz')
-            elif calculate>=25.00 and calculate<=29.99:
-                message_calculate.config(text='Fazla Kilolusunuz')
-            elif calculate>=30.00:
-                message_calculate.config(text='Obezsiniz')
-
-        except:
-            my_calculate.config(text='Rakam Giriniz')
+        bmı=float(weight)/(float(height)/100)**2
+        result_string=write_resutl(bmı)
+        result_label.config(text=result_string)
 
 
-#Boy
-label_height=Label(text='Please Enter Height',font='italic',pady=10)
-label_height.pack()
+#ui
+height_label=tkinter.Label(text='Please Enter Height (cm)',font='italic')
+height_label.pack()
 
-entry_height=Entry(bg='light blue',font='italic')
-entry_height.pack()
-
-
-#kilo
-label_weight=Label(text='Please Enter Weight',font='italic',pady=20)
-label_weight.pack()
+height_entry=tkinter.Entry()
+height_entry.pack()
 
 
-entry_weight=Entry(bg='light blue',font='italic')
-entry_weight.pack()
+weigth_label=tkinter.Label(text='Please Enter Weight (kg)',font='italic',pady=20)
+weigth_label.pack()
+
+weight_entry=tkinter.Entry()
+weight_entry.pack()
+
+calculate_button=tkinter.Button(text='Calculate',font='italic',command=button_function)
+calculate_button.pack()
 
 
-my_button=Button(text='Calculate',padx=20,font='italic',command=buttton_function)
-my_button.pack()
-
-my_calculate=Label(text='Calculate')
-my_calculate.pack()
-
-message_calculate=Label(text='Message Calculate')
-message_calculate.pack()
+result_label=tkinter.Label()
+result_label.pack()
 
 
+def write_resutl(bmi):
+    result_string=(f'You are BMI {round(bmi,2)} You are ')
+    if bmi<=18.5:
+        result_string+='Thin'
+    elif bmi>=18.6 and bmi<=24.90:
+        result_string+='Healty'
+    elif bmi>=25 and bmi<=29.9:
+        result_string+='Overweight'
+    else:
+        result_string+='Obese'
+    return result_string
 
-
-
-
-window.mainloop()
+tkinter.mainloop()
